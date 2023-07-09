@@ -6,12 +6,13 @@
 
 #include <iomanip>
 #include <sstream>
+#define COLUMN_WIDTH 40
 
 class ReceiptPrinter
 {
 
 public:
-    ReceiptPrinter() : ReceiptPrinter(40)
+    ReceiptPrinter() : ReceiptPrinter(COLUMN_WIDTH)
     {
     }
 
