@@ -33,20 +33,21 @@ void ShoppingCart::handleOffers(Receipt& receipt, std::map<Product, Offer> offer
             int quantityAsInt = (int) quantity;
             Discount* discount = nullptr;
             int x = 1;
-
+            
             if (offer.getOfferType() == SpecialOfferType::ThreeForTwo) {
                 x = 3;
             } else if (offer.getOfferType() == SpecialOfferType::TwoForAmount) {
                 x = 2;
-                if (quantityAsInt >= 2) {
-                    double total = offer.getArgument() * (quantityAsInt / x) + quantityAsInt % 2 * unitPrice;
-                    double discountN = unitPrice * quantity - total;
-                    discount = new Discount("2 for " + std::to_string(offer.getArgument()), -discountN, product);
-                }
+                
             } if (offer.getOfferType() == SpecialOfferType::FiveForAmount) {
                 x = 5;
             }
             int numberOfXs = quantityAsInt / x;
+            if (offer.getOfferType() == SpecialOfferType::TwoForAmount && quantityAsInt >= 2) {
+                    double total = offer.getArgument() * (quantityAsInt / x) + quantityAsInt % 2 * unitPrice;
+                    double discountN = unitPrice * quantity - total;
+                    discount = new Discount("2 for " + std::to_string(offer.getArgument()), -discountN, product);
+            }
             if (offer.getOfferType() == SpecialOfferType::ThreeForTwo && quantityAsInt > 2) {
                 double discountAmount = quantity * unitPrice - ((numberOfXs * 2 * unitPrice) + quantityAsInt % 3 * unitPrice);
                 discount = new Discount("3 for 2", -discountAmount, product);
