@@ -19,6 +19,8 @@ public:
 
     void addItemQuantity(const Product& product, double quantity);
 
+    Discount* ShoppingCart::discountCalculator(int x , int quantityAsInt , Offer offer , double unitPrice , double quantity , Product product);
+
     void handleOffers(Receipt& receipt, std::map<Product, Offer> offers, SupermarketCatalog* catalog);
 
 private:
