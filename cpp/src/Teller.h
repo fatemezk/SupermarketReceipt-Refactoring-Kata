@@ -14,12 +14,11 @@ public:
 
     void addSpecialOffer(SpecialOfferType offerType, const Product& product, double argument);
 
-    Receipt checksOutArticlesFrom(ShoppingCart theCart);
+    Receipt checksOutArticlesFrom(ShoppingCart& theCart);
 
 private:
     SupermarketCatalog* catalog;
     std::map<Product, Offer> offers;
 };
-
 
 #endif //CPP_TELLER_H

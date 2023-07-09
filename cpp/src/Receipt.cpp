@@ -26,3 +26,23 @@ double Receipt::getTotalPrice() const {
     }
     return total;
 }
+
+std::vector<ReceiptItem> NullReceipt::getItems() const {
+    return {};
+}
+
+std::vector<Discount> NullReceipt::getDiscounts() const {
+    return {};
+}
+
+double NullReceipt::getTotalPrice() const {
+    return 0.0;
+}
+
+void NullReceipt::addDiscount(const Discount& discount) {
+    // Do nothing
+}
+
+void NullReceipt::addProduct(const Product& product, double quantity, double price, double totalPrice) {
+    // Do nothing
+}
